@@ -1,0 +1,37 @@
+!!!
+%html
+%head
+%meta{:content =>'text/html', :charset => 'UTF-8', :http-equiv=>'Content-Type'}
+%title="ChatSpace"
+%meta{:name =>"csrf-param", :content => "authenticity_token"}
+%meta{:name => "csrf-token", :content => "O4eiRvLHyDXThBOz9tUeuLJHzNu3UQZCuT7NLIEeT9Rk3LvYrq+j831LwrKC96BiMnw60hln3E0OiC0Pup0bbQ=="}
+%link{:rel => "stylesheet", :media => "all", :href => "/assets/stylesheets/messages.scss"}
+%script{src:"/javascripts/application.js"}
+%body
+  %div{class:"notification"}
+
+  %div{class:"wrapper"}
+    %div{class:'side-bar'}
+      %div{class:'header'}
+        %div{class:'header__name'}
+          yama1
+          / %a{class:"chat-side__user--new-group",href:"/groups/new"}
+          / %i{class:'fa fa-pencil-square-o'}
+          / %a{class:"chat-side__user--edit-user",href:"/users/edit"}
+          / %i{class:'fa fa-cog'}
+
+        %div{class:'groups'}
+          home1
+        %div{class:'chat-side__groups-list'}
+    %div{class:'chat'}
+      %div{class:'header'}
+        %div{class:'left-header'}
+          %div{class:'left-header__title'}
+            test1
+            %ul{class:'left-header__members'}
+              %li{class:'member'}メンバー1
+              %li{class:'member'}メンバー2
+              %li{class:'member'}メンバー３
+
+
+
