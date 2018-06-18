@@ -3,59 +3,57 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .wrapper{
   display: flex;
-  width: 300px;
-  .side-bar{
-    height:100px;
-    line-height: 100px;
+    .side-bar{
+      box-sizing: border-box;
+      color: #fff;
+      width: 300px;
+          &__header{
+          background-color: #253141;
+          line-height: 100px;
+          padding: 0 20px;
+            &__name {
+              display: inline-block;
+              font-size: 16px;
+              font-weight: bold;
+            }
+          }
 
-    .header{
-      .header__name{
-        box-sizing: border-box;
-        background-color:#253141;
-        color:#fff;
-        width: 300px;
-        padding:0 20px;
+          .side-bar__groups{
+              background-color:#2f3e51;
+              height: calc(100vh - 100px);
+                .side-bar__groups__group{
+                  padding: 20 0 40px;
+                }
+          }
       }
-    }
 
-    .groups{
-        box-sizing: border-box;
-        background-color:#2f3e51;
-        color:#fff;
-        height: calc(100vh - 100px);
-        width:300px;
-        padding:0 20px;
-    }
+    .chat{
+      height: auto;
+      max-width: auto;
+      padding:0 40px;
+      .chat-header{
+        background:#FFF;
 
-  }
-
-  .chat{
-    height: 100px;
-    padding: 0 40px;
-    .header{
-      background:#FFF;
-
-      .left-header{
-        .left-header__title{
-          color:#333;
-          font-size: 20px;
-          margin-top: 35px;
-          .left-header__members{
-            display: flex;
+        .chat-header{
+          .chat-header__title{
+            color:#333;
+            font-size: 20px;
+          }
+          .chat-header__members{
             color: #999;
             font-size: 12px;
-            margin-top: 15px;
             .member{
-              li{
-                display: list-item;
-                padding-right: 5px;
-              }
+              width: 150px;
+                ul{
+                  li{
+                    display:inline;
+                  }
+                }
             }
           }
         }
       }
-
     }
-  }
 }
+
 

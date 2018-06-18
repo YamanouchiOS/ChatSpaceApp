@@ -12,23 +12,24 @@
 
   %div{class:"wrapper"}
     %div{class:'side-bar'}
-      %div{class:'header'}
-        %div{class:'header__name'}
+      %div{class:'side-bar__header'}
+        %h3{class:'side-bar__header__name'}
           yama1
           / %a{class:"chat-side__user--new-group",href:"/groups/new"}
           / %i{class:'fa fa-pencil-square-o'}
           / %a{class:"chat-side__user--edit-user",href:"/users/edit"}
           / %i{class:'fa fa-cog'}
+      %div{class:'side-bar__groups'}
+        %h3{class:'side-bar__groups__group'}
+          group1
 
-        %div{class:'groups'}
-          home1
-        %div{class:'chat-side__groups-list'}
     %div{class:'chat'}
-      %div{class:'header'}
-        %div{class:'left-header'}
-          %div{class:'left-header__title'}
+      %div{class:'chat-header'}
+        %div{class:'chat-header'}
+          %div{class:'chat-header__title'}
             test1
-            %ul{class:'left-header__members'}
+          %div{class:'chat-header__members'}
+            %ul
               %li{class:'member'}メンバー1
               %li{class:'member'}メンバー2
               %li{class:'member'}メンバー３
