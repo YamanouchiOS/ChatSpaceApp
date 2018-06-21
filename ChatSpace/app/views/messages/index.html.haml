@@ -1,38 +1,37 @@
-!!!
-%html
-%head
-%meta{:content =>'text/html', :charset => 'UTF-8', :http-equiv=>'Content-Type'}
-%title="ChatSpace"
-%meta{:name =>"csrf-param", :content => "authenticity_token"}
-%meta{:name => "csrf-token", :content => "O4eiRvLHyDXThBOz9tUeuLJHzNu3UQZCuT7NLIEeT9Rk3LvYrq+j831LwrKC96BiMnw60hln3E0OiC0Pup0bbQ=="}
-%link{:rel => "stylesheet", :media => "all", :href => "/assets/stylesheets/messages.scss"}
-%script{src:"/javascripts/application.js"}
-%body
-  %div{class:"notification"}
-
-  %div{class:"wrapper"}
-    %div{class:'side-bar'}
-      %div{class:'side-bar__header'}
-        %h3{class:'side-bar__header__name'}
+.notification
+  .wrapper
+    .side-bar
+      .side-bar__header
+        .side-bar__header__name
           yama1
           / %a{class:"chat-side__user--new-group",href:"/groups/new"}
           / %i{class:'fa fa-pencil-square-o'}
           / %a{class:"chat-side__user--edit-user",href:"/users/edit"}
           / %i{class:'fa fa-cog'}
-      %div{class:'side-bar__groups'}
-        %h3{class:'side-bar__groups__group'}
-          group1
+      .side-bar__groups
+        = render partial: 'groups/group', locals: { group: @group }
 
-    %div{class:'chat'}
-      %div{class:'chat-header'}
-        %div{class:'chat-header'}
-          %div{class:'chat-header__title'}
+    .chat
+      .chat-header
+        .chat-header-left
+          .chat-header-left__title
             test1
-          %div{class:'chat-header__members'}
-            %ul
-              %li{class:'member'}メンバー1
-              %li{class:'member'}メンバー2
-              %li{class:'member'}メンバー３
+            %ul{class:'chat-header-left__members'}
+              Member：
+              %li{class:'member'}mm1
+              %li{class:'member'}mm2
+              %li{class:'member'}mm３
+        .chat-header-right
+          %a.chat-header-right__button{:href => ""}
+            Edit
+      .messages
+      .form
+        %form{class:'js-form', :id => "new_message", :enctype =>"", :action=>"", :accept-charset => "UTF-8", :method=>"post"}
+          %input{:name => "utf8", :type=>"hidden", :value=>""}
+          %input{class:"form__message js-content", :placeholder=>"type a message", :type=>"text", :name=>"message[content]", :id=>"message_content"}
 
-
-
+          .form__mask
+            %label{class:"form__mask__image", :for =>"message_image"}
+            %i{class:"fa fa-picture-o icon"}
+            %input{class:"hidden js-file", :type => "file", :name => "message[image]", :id => "message_image"}
+            %input{class:"form__submit", :type => "submit", :name => "commit", :value => "Send", :data-disable-with => "Send"}

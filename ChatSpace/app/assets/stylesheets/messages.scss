@@ -1,6 +1,10 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a{
+  text-decoration:none;
+}
+
 .wrapper{
   display: flex;
     .side-bar{
@@ -9,6 +13,7 @@
       width: 300px;
           &__header{
           background-color: #253141;
+          width: 260px;
           line-height: 100px;
           padding: 0 20px;
             &__name {
@@ -21,38 +26,95 @@
           .side-bar__groups{
               background-color:#2f3e51;
               height: calc(100vh - 100px);
-                .side-bar__groups__group{
-                  padding: 20 0 40px;
-                }
-          }
-      }
-
-    .chat{
-      height: auto;
-      max-width: auto;
-      padding:0 40px;
-      .chat-header{
-        background:#FFF;
-
-        .chat-header{
-          .chat-header__title{
-            color:#333;
-            font-size: 20px;
-          }
-          .chat-header__members{
-            color: #999;
-            font-size: 12px;
-            .member{
-              width: 150px;
-                ul{
-                  li{
-                    display:inline;
+              padding: 0 20px;
+                .group{
+                  padding: 20px 0px 40px 0px;
+                  .group__name{
+                    color: #fff;
+                    font-size: 15px;
+                  }
+                  .group__message{
+                    color: #fff;
+                    font-size: 11px;
+                    padding: 5px 0px 0px 0px;
                   }
                 }
+          }
+      }
+    .chat{
+      max-height: 100%;
+      width: calc(100% - 300px);
+        .chat-header{
+          height: 100px;
+          background:#FFF;
+          padding:0px 40px;
+          box-sizing: border-box;
+            .chat-header-left{
+              float: left;
+              min-width: auto;
+                .chat-header-left__title{
+                  color:#333;
+                  font-size: 20px;
+                  padding:35px 0px 0px 0px;
+                }
+                .chat-header-left__members{
+                  color: #999;
+                  font-size:12px;
+                  padding:15px 0px 0px 0px;
+                    .member{
+                      display:inline;
+                    }
+                }
             }
+        }
+        .chat-header-right{
+          float: right;
+          margin-top: 28px;
+          border: 1px solid #38AEF0;
+          padding:10px 20px;
+            .chat-header-right__button{
+              color: #38AEF0;
+              cursor: pointer;
+              text-decoration: none;
+            }
+        }
+        .messages{
+          background-color: #FAFAFA;
+          box-sizing:border-box;
+          height:610px;
+          overflow: scroll;
+          padding: 46px 40px 0px;
+        }
+        .form{
+          bottom:0;
+          background-color: #DDDDDD;
+          box-sizing: border-box;
+          height: 90px;
+          padding: 20px 50px 20px 40px;
+
+          .form__message{
+            border: none;
+            box-sizing: border-box;
+            float: left;
+            height: 50px;
+            padding: 0 10px;
+            width: calc(100% - 150px);
+          }
+          .form__mask{
+            background-color: #fff;
+            height: 50px;
+            padding-right: 10px;
+          }
+          .form__submit{
+            background-color: #38AEF0;
+            border: none;
+            color: #fff;
+            float: right;
+            font-size: 16px;
+            height: 50px;
+            margin-left: 15px;
           }
         }
-      }
     }
 }
 
