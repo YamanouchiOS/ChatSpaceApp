@@ -2,12 +2,15 @@
   .wrapper
     .side-bar
       .side-bar__header
-        .side-bar__header__name
-          yama1
-          / %a{class:"chat-side__user--new-group",href:"/groups/new"}
-          / %i{class:'fa fa-pencil-square-o'}
-          / %a{class:"chat-side__user--edit-user",href:"/users/edit"}
-          / %i{class:'fa fa-cog'}
+        %h3.side-bar__header__name
+          = current_user.id
+        %ul.side-bar__header__lists
+          %li.list
+            = link_to new_group_path do
+              = fa_icon 'pencil-square-o', class: 'icon'
+          %li.list
+            = link_to edit_user_path(current_user) do
+              = fa_icon 'fas fa-cog', class: 'icon'
       .side-bar__groups
         = render partial: 'groups/group', locals: { group: @group }
 

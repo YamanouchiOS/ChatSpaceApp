@@ -4,6 +4,9 @@
 a{
   text-decoration:none;
 }
+ul{
+  list-style: none;
+}
 
 .wrapper{
   display: flex;
@@ -13,13 +16,18 @@ a{
       width: 300px;
           &__header{
           background-color: #253141;
+          height: 30px;
           width: 260px;
-          line-height: 100px;
-          padding: 0 20px;
+          padding: 35px 20px;
             &__name {
-              display: inline-block;
               font-size: 16px;
               font-weight: bold;
+              float: left;
+            }
+            &__lists {
+              width: 100px;
+              float: right;
+              display:inline;
             }
           }
 

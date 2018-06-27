@@ -63,4 +63,8 @@ gem 'html2haml'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
+gem 'sprockets-rails'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
