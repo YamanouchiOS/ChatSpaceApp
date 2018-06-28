@@ -28,13 +28,11 @@
           %a.chat-header-right__button{:href => ""}
             Edit
       .messages
-      .form
-        %form{class:'js-form', :id => "new_message", :enctype =>"", :action=>"", :accept-charset => "UTF-8", :method=>"post"}
-          %input{:name => "utf8", :type=>"hidden", :value=>""}
-          %input{class:"form__message js-content", :placeholder=>"type a message", :type=>"text", :name=>"message[content]", :id=>"message_content"}
-
-          .form__mask
-            %label{class:"form__mask__image", :for =>"message_image"}
-            %i{class:"fa fa-picture-o icon"}
-            %input{class:"hidden js-file", :type => "file", :name => "message[image]", :id => "message_image"}
-            %input{class:"form__submit", :type => "submit", :name => "commit", :value => "Send", :data-disable-with => "Send"}
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
