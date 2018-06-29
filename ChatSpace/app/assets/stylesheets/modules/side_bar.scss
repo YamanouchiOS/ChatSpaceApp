@@ -3,13 +3,13 @@
   color: $white;
   width: 300px;
   .header {
-    background-color: $side_blue_dark;
+    background-color: #253141;
     height: 100px;
     line-height: 100px;
     padding: 0 20px;
     &__name {
       display: inline-block;
-      font-size: $side_header_font;
+      font-size:100%;
       font-weight: bold;
     }
     &__lists {
@@ -19,8 +19,8 @@
         display: inline-block;
       }
       .icon {
-        color: $white;
-        font-size: $side_header_font;
+        color: #fff;
+        font-size: 100%;
       }
     }
   }
@@ -33,12 +33,12 @@
       box-sizing: border-box;
       padding: 20px 0 40px;
       &__name {
-        color: $white;
-        font-size: $side_group_name;
+        color: #fff;
+        font-size: 15px;
       }
       &__message {
-        color: $white;
-        font-size: $side_group_message;
+        color: #fff;
+        font-size: 11px;
         margin-top: 5px;
       }
     }
