@@ -7,23 +7,21 @@
       .chat-header
         .chat-header-left
           .chat-header-left__title
-            test1
+            = @group.name
             %ul{class:'chat-header-left__members'}
               Member：
-              %li{class:'member'}mm1
-              %li{class:'member'}mm2
-              %li{class:'member'}mm３
+              %li{class:'member'}testmember1
         .chat-header-right
-          %a.chat-header-right__button{:href => ""}
+          %a.chat-header-right__button{:href => "/groups/#{@group.id}/edit"}
             Edit
-        .messages
-          = render @messages
+      .messages
+        = render partial: 'message', collection: @messages
 
-    .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+      .form
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'

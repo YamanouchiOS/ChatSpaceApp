@@ -1,29 +1,29 @@
 .notification
   .wrapper
     .side-bar
-      = render partial: 'shared/side_bar', locals: { group: @group }
+      = render partial: 'shared/side_bar' #, locals: { group: @group }
 
     .chat
-      .chat-header
-        .chat-header-left
-          .chat-header-left__title
-            test1
-            %ul{class:'chat-header-left__members'}
-              Member：
-              %li{class:'member'}mm1
-              %li{class:'member'}mm2
-              %li{class:'member'}mm３
-        .chat-header-right
-          %a.chat-header-right__button{:href => ""}
-            Edit
+      / .chat-header
+      /   .chat-header-left
+      /     .chat-header-left__title
+      /       test1
+      /       %ul{class:'chat-header-left__members'}
+      /         Member：
+      /         %li{class:'member'}mm1
+      /         %li{class:'member'}mm2
+      /         %li{class:'member'}mm３
+      /   .chat-header-right
+      /     %a.chat-header-right__button{:href => ""}
+      /       Edit
       .messages
-        = render partial: 'messages/_message', locals: { messages: @messages }
+        / = render partial: 'messages/message', locals: { messages: @messages }
 
-    .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+    / .form
+    /   = form_for [@group, @message] do |f|
+    /     = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+    /     .form__mask
+    /       = f.label :image, class: 'form__mask__image' do
+    /         = fa_icon 'picture-o', class: 'icon'
+    /         = f.file_field :image, class: 'hidden'
+    /     = f.submit 'Send', class: 'form__submit'

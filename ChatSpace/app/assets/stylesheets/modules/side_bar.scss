@@ -12,7 +12,7 @@
       font-size:100%;
       font-weight: bold;
     }
-    &__lists {
+    .header__lists{
       display: inline-block;
       float: right;
       .list {
@@ -36,7 +36,7 @@
         color: #fff;
         font-size: 15px;
       }
-      &__message {
+      .group__message {
         color: #fff;
         font-size: 11px;
         margin-top: 5px;
