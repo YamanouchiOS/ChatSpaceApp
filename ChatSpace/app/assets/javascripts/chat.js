@@ -1,25 +1,29 @@
 $(function(){
+  const INTERVAL = 10000
   function buildHTML(message){
     var img = message.img ? `<img class="lower-message__image" src="${message.img}">` : "";
-    var html = `<div class="message" data-message-id="${message.id}">
-                  <ul class="user">
-                    <li class="list user__name">
-                      ${message.user_name}
-                    </li>
-                    <li class="list user__date">
-                      ${message.created}
-                    </li>
-                  </ul>
-                  <p class="text">
-                    ${message.body}
+
+    var html = `<div class="message">
+                  <div class="message__user-name">
+                    ${message.name}
+                  </div>
+                  <div class="message__date">
+                    ${message.created_at}
+                  </div>
+                </div>
+                <div class="meesage__content">
+                  <p class="message__text">
+                    ${message.content}
                   </p>
                   ${img}
                 </div>`
     return html
   }
-  function scrollBottom(target){
-    $('.content').animate({scrollTop:$('.content')[0].scrollHeight},{duration:1000});
+
+  function scrollMessage() {
+    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast')
   }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -32,9 +36,10 @@ $(function(){
       processData: false,
       contentType: false
     })
+
     .done(function(data){
-      $('.content').append(buildHTML(data));
-      scrollBottom();
+      $('.messages').append(buildHTML(data));
+      scrollMessage();
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
@@ -43,6 +48,7 @@ $(function(){
       $('.form__submit').prop('disabled', false);
     })
   })
+
   var interval = setInterval(function(){
     if(window.location.pathname.match(/\/groups\/\d+\/messages/)){
         $.ajax({
@@ -52,25 +58,26 @@ $(function(){
             processData: false,
             contentType: false
         })
+
         .done(function(data){
-          var id = $('.message').last().data('messageId');
-          var insertHTML = '';
-          data.messages.forEach(function(message){
-            if(message.id > id ){
-              insertHTML += buildHTML(message);
-              scrollBottom();
-            }
-          });
-          $('.content').append(insertHTML);
+          var addHTML = '';
+          var updatedMessage = $('.message').length;
+          var Messages = data.messages.length;
+            for(var i = updatedMessage; i < Messages; i++) {
+              addHTML += buildHTML(data.messages[i]);
+            };
+            $('.messages').append(addHTML);
         })
+
         .fail(function(data){
-          alert('メッセージの更新ができませんでした')
+          // alert('メッセージは最新の状態です。')
+          console.log("失敗");
         });
       }
     else{
       clearInterval(interval);
     }
-  },1000 );
+  },INTERVAL);
 });
 
 

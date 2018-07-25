@@ -3,15 +3,15 @@
     = render partial: 'shared/side_bar', locals: { group: @group }
 
   .chat
-    .chat-header.clearfix
-      .chat-header-left
-        %p.chat-header-left__title
+    .header
+      .left-header
+        %p.left-header__title
           = @group.name
-        %p.chat-header-left__members
+        %p.left-header__members
           Member：
           - @group.users.each do |user|
             = user.name
-      .chat-header-right
+      .right-header
         = link_to "Edit", edit_group_path(@group), method: :get, class: 'right-header__button'
     .messages
       = render partial: 'message', collection: @messages
@@ -23,5 +23,6 @@
           = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'
             = f.file_field :image, class: 'hidden'
+
         = f.submit 'Send', class: 'form__submit'
 
