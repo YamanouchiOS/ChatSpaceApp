@@ -1,11 +1,12 @@
 $(function(){
-  const INTERVAL = 10000
+  var message_list = $(".messages");
+  const INTERVAL = 5000
   function buildHTML(message){
     var img = message.img ? `<img class="lower-message__image" src="${message.img}">` : "";
 
     var html = `<div class="message">
                   <div class="message__user-name">
-                    ${message.name}
+                    ${message.user_name}
                   </div>
                   <div class="message__date">
                     ${message.created_at}
@@ -17,7 +18,7 @@ $(function(){
                   </p>
                   ${img}
                 </div>`
-    return html
+    message_list.append(html);
   }
 
   function scrollMessage() {
@@ -38,6 +39,7 @@ $(function(){
     })
 
     .done(function(data){
+      console.log(data);
       $('.messages').append(buildHTML(data));
       scrollMessage();
       $('#new_message')[0].reset();
@@ -49,36 +51,29 @@ $(function(){
     })
   })
 
-  var interval = setInterval(function(){
-    if(window.location.pathname.match(/\/groups\/\d+\/messages/)){
+  setInterval(function(){
+    if(location.pathname.match(/\/groups\/\d+\/messages/)){
+        var lastMessageId = $('.messages').find('.message').last().data('message-id')
+
         $.ajax({
             url: location.pathname,
             type: "GET",
+            data: {"lastMessageId": lastMessageId},
             dataType: 'json',
-            processData: false,
-            contentType: false
         })
 
-        .done(function(data){
-          var addHTML = '';
-          var updatedMessage = $('.message').length;
-          var Messages = data.messages.length;
-            for(var i = updatedMessage; i < Messages; i++) {
-              addHTML += buildHTML(data.messages[i]);
-            };
-            $('.messages').append(addHTML);
+       .done(function(data){
+          data.messages.forEach(function(message){
+              buildHTML(message);
+          })
         })
-
-        .fail(function(data){
+        .fail(function(){
           // alert('メッセージは最新の状態です。')
-          console.log("失敗");
+          console.log("更新失敗");
         });
       }
-    else{
-      clearInterval(interval);
-    }
   },INTERVAL);
-});
+  });
 
 
 // $(function(){
