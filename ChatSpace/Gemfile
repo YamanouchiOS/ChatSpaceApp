@@ -74,4 +74,10 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'enum_help'
 
+group :production do
+  gem 'unicorn'
+end
+
+gem install bundler
