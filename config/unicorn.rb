@@ -9,7 +9,7 @@
 
 app_path = File.expand_path('../../../', __FILE__)
 
-working_directory "#{app_path}/ChatSpaceApp/current"
+working_directory "#{app_path}/ChatSpaceApp/"
 
 listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
