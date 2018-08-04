@@ -1,11 +1,20 @@
-app_path = File.expand_path('../../', __FILE__)
+# app_path = File.expand_path('../../', __FILE__)
 
-worker_processes 1
+# worker_processes 1
 
-working_directory app_path
-pid "#{app_path}/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/log/unicorn.stderr.log"
-stdout_path "#{app_path}/log/unicorn.stdout.log"
+# working_directory app_path
+# pid "#{app_path}/tmp/pids/unicorn.pid"
+# stderr_path "#{app_path}/log/unicorn.stderr.log"
+# stdout_path "#{app_path}/log/unicorn.stdout.log"
+
+app_path = File.expand_path('../../../', __FILE__)
+
+working_directory "#{app_path}/current"
+
+listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
+pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
 
 listen 3000
 timeout 60
@@ -39,3 +48,4 @@ end
 after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
+
