@@ -10,7 +10,7 @@ server '13.112.44.217', user: 'ec2-user', roles: %w{app db web}
 
 
 set :ssh_options, {
-  keys: [File.expand_path('~/.ssh/chatspacekey.pem')],#'~/.ssh/id_rsa'部分をローカル環境の鍵のパスに
+  keys: [File.expand_path('~/.ssh/id_rsa')],#'~/.ssh/id_rsa'部分をローカル環境の鍵のパスに
 }
 # role-based syntax
 # ==================
