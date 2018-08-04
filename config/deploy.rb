@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '<Capistranoのバージョン>'
+lock '3.11.0'
 
 set :application, 'ChatSpaceApp'
 set :repo_url,  'git@github.com/YamanouchiOS/ChatSpaceApp.git'
