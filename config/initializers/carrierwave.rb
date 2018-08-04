@@ -16,3 +16,4 @@ CarrierWave.configure do |config|
   config.fog_directory  = 'upload-chatspace1'
   config.asset_host = 'https://ap-northeast-1.amazonaws.com/upload-chatspace1'
 end
+
