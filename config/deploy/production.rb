@@ -8,6 +8,13 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 server '13.112.44.217', user: 'ec2-user', roles: %w{app db web}
 
+
+set :ssh_options, {
+  port: 22,　#XXXにポート番号
+  keys: [File.expand_path('/Users/yamanouchitomoaki/.ssh/chatspacekey.pem')],　#'~/.ssh/id_rsa'部分をローカル環境の鍵のパスに
+  forward_agent: true,
+  auth_methods: %w(publickey)
+}
 # role-based syntax
 # ==================
 
