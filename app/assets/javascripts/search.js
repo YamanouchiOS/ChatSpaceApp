@@ -1,6 +1,7 @@
 $(function() {
   var search_users = $("#search-result")
   var group_menbers = $("#group-menber")
+  var globalName = []
 
   function searchUser(user){
     var html = `<div class="chat-group-user js-chat-member clearfix">
@@ -19,16 +20,18 @@ $(function() {
 
   function addUser(name, id){
     var members_count =$(".js-chat-member").length;
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${members_count}'>
+    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-${members_count}' value='${id}'>
                 <input name='group[user_ids][]' type='hidden' value='${id}'>
                 <p class='chat-group-user__name'>${name}</p>
-                <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+                <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn' data-user-name="${name}">削除</a>
                 </div>`
     group_menbers.append(html)
+    globalName += name
   }
 
   function removeMember(button) {
   $(button).parents('.js-chat-member').remove();
+    globalName = globalName.filter(n => n !== name);
   }
 
   $("#user-search-field").on("keyup", function() {
@@ -41,7 +44,7 @@ $(function() {
         $.ajax({
           type: 'GET',
           url: '/users',
-          data: {keyword: keyword},
+          data: {keyword: keyword, name: globalName},
           dataType: 'json'
         })
       .done(function(users){
@@ -63,8 +66,10 @@ $(function() {
 
   $("#search-result").on('click', '.js-add-btn', function() {
     var name = $(this).data("user-name")
+
     var id = $(this).data("user-id")
     removeMember($(this));
+
     addUser(name, id);
     $(this).parent().remove();
   });
