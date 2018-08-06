@@ -2,7 +2,7 @@ $(function(){
   var message_list = $(".messages");
   const INTERVAL = 5000
   function buildHTML(message){
-    var img = message.img ? `<img class="lower-message__image" src="${message.img}">` : "";
+    var img = message.image ? `<img class="lower-message__image" src="${message.image}">` : "";
 
     var html = `<div class="message">
                   <div class="message__user-name">
