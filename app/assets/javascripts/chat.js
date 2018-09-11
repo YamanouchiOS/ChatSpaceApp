@@ -1,5 +1,6 @@
 $(function(){
   var message_list = $(".messages");
+
   const INTERVAL = 5000
   function buildHTML(message){
     var img = message.image ? `<img class="lower-message__image" src="${message.image}">` : "";
